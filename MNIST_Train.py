@@ -25,6 +25,8 @@ def main():
 
 
     model = MLP.simpleNet(28*28,300,100,10)
+    if torch.cuda.is_available():
+        model=model.cuda()
     criterion=nn.CrossEntropyLoss()
     optimizer=optim.SGD(model.parameters(),lr=lr)
     #model train
